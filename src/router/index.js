@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import lhbIndex from '@/components/lhb/index'
-import demon1 from '@/components/demo/demo1'
+import lhbIndex from '@/views/lhb/index'
+import demon1 from '@/views/demo/demo1'
 Vue.use(Router)
 
 export default new Router({

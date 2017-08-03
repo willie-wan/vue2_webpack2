@@ -1,10 +1,10 @@
 <template>
     <div class="page page-current nl-lhb-detais">
         <m-header></m-header>
-        <footer>
+        <footer v-if="!loading">
             <button class="button button-round ld-button-block" @click="getLhbDetails">充值</button>
         </footer>
-        <div class="content ld-content pd-details-box1">
+        <div class="content ld-content pd-details-box1" v-if="!loading">
             <m-banner :url="detailsInf.activeImageUrl" :hasClose='1'></m-banner>
             <div class="ele base-inf">
                 <div class="item1">
@@ -67,20 +67,24 @@
                 <span class="td-u">更换</span>
             </div>
         </div>
+        <m-loading v-if="loading"></m-loading>
     </div>
 </template>
 <script>
-import MHeader from '../header.vue'
-import MBanner from '../banner.vue'
-import * as rqApi from '../../store/index'
+import MHeader from '@/components/header'
+import MBanner from '@/components/banner'
+import MLoading from '@/components/loading'
+import * as rqApi from '@/store/index'
 export default {
     components: {
         MHeader,
-        MBanner
+        MBanner,
+        MLoading
     },
     data() {
         return {
-            detailsInf:{}
+            detailsInf:{},
+            loading:1
         }
     },
     mounted(){
@@ -93,6 +97,7 @@ export default {
                 .then(function (req) {
                     if (req.data.respCode == '000') {
                         vm.detailsInf=req.data.data;
+                        vm.loading=0;
                     }
                 })
                 .catch(function (error) {
