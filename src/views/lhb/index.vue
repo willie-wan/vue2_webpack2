@@ -1,6 +1,6 @@
 <template>
     <div class="page page-current nl-lhb-detais">
-        <m-header></m-header>
+        <m-header title-text="利活宝"></m-header>
         <footer v-if="!loading">
             <button class="button button-round ld-button-block" @click="getLhbDetails">充值</button>
         </footer>
@@ -74,7 +74,7 @@
 import MHeader from '@/components/header'
 import MBanner from '@/components/banner'
 import MLoading from '@/components/loading'
-import * as rqApi from '@/store/index'
+import * as rqApi from '@/store/api'
 export default {
     components: {
         MHeader,

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import lhbIndex from '@/views/lhb/index'
-import demon1 from '@/views/demo/demo1'
+import login from '@/views/login'
 Vue.use(Router)
 
 export default new Router({
@@ -12,9 +12,9 @@ export default new Router({
       component: lhbIndex
     },
     {
-      path: '/demo1',
-      name: 'demon1',
-      component: demon1
+      path: '/login',
+      name: 'login',
+      component: login
     }
   ]
 })

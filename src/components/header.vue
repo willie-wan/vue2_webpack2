@@ -3,12 +3,15 @@
         <a @click="goback"  class="button button-link button-nav pull-left">
             <span class="icon icon-left"></span>
         </a>
-        <h1 class="title">利活宝</h1>
+        <h1 class="title" v-text="titleText"></h1>
     </header>
 </template>
 <script>
 export default {
     name: 'm-header',
+    props:{
+        titleText:String
+    },
     data() {
         return {
             msg: 'Welcome to Your Vue.js App',

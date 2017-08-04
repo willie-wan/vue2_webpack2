@@ -7,3 +7,10 @@ export const getProductDetail = () =>
   request({
     url: 'lhbFirstTimeRechargeDetail.app'
   })
+
+// 登录
+export const login = (obj) =>
+  request({
+    url: 'login.app',
+    data: obj.data
+  })

@@ -14,20 +14,14 @@ let mpubData = { //公共请求参数
 
 // M站接口公共入参合并并加密
 function RSAmergeDate(data) {
-  let obj1;
-  if (data) {
-    obj1 = LeadBaseADM.isEmptyObject(data) ? data : {};
-  } else {
-    obj1 = {}
-  }
-  console.log(JSON.stringify(Object.assign({}, mpubData, obj1)));
-  return LeadBaseADM.encrypts(JSON.stringify(Object.assign({}, mpubData, obj1)))
+  console.log(JSON.stringify(Object.assign({}, mpubData, data)));
+  return LeadBaseADM.encrypts(JSON.stringify(Object.assign({}, mpubData, data)))
 }
 
 axios.defaults.baseURL = window.location.origin+"/front-gateway-web/";
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 
-export const request = ({method='post',url,data}) =>
+export const request = ({method='post',url,data={}}) =>
   axios({
     method,
     url,
