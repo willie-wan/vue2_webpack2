@@ -49,8 +49,8 @@
 </template>
 <script>
 import router from '@/router/index'
-import * as rqApi from '@/store/api'
-import Validator from '@/store/mValid'
+import * as rqApi from '@/lib/api'
+import Validator from '@/lib/mValid'
 
 import MHeader from '@/components/header'
 import MLoading from '@/components/loading'

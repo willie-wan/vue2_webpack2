@@ -1,10 +1,10 @@
 <template>
     <div class="page page-current nl-lhb-detais">
         <m-header title-text="利活宝"></m-header>
-        <footer v-if="!loading">
+        <footer>
             <button class="button button-round ld-button-block" @click="getLhbDetails">充值</button>
         </footer>
-        <div class="content ld-content pd-details-box1" v-if="!loading">
+        <div class="content ld-content pd-details-box1">
             <m-banner :url="detailsInf.activeImageUrl" :hasClose='1'></m-banner>
             <div class="ele base-inf">
                 <div class="item1">
@@ -67,14 +67,14 @@
                 <span class="td-u">更换</span>
             </div>
         </div>
-        <m-loading v-if="loading"></m-loading>
+        <m-loading ref="childMtd"></m-loading>
     </div>
 </template>
 <script>
 import MHeader from '@/components/header'
 import MBanner from '@/components/banner'
 import MLoading from '@/components/loading'
-import * as rqApi from '@/store/api'
+import * as rqApi from '@/lib/api'
 export default {
     components: {
         MHeader,
@@ -83,8 +83,7 @@ export default {
     },
     data() {
         return {
-            detailsInf:{},
-            loading:1
+            detailsInf:{}
         }
     },
     mounted(){
@@ -93,11 +92,12 @@ export default {
     methods: {
         getLhbDetails() {
             let vm=this;
+            console.log(vm);
             rqApi.getProductDetail()
                 .then(function (req) {
                     if (req.data.respCode == '000') {
                         vm.detailsInf=req.data.data;
-                        vm.loading=0;
+                        vm.$refs.childMtd.hide();
                     }
                 })
                 .catch(function (error) {

@@ -26,8 +26,8 @@ export default {
     },
     methods: {
         goback: function () {
-            // routes/index 定义同意返回方法
-            this.$router.goBack();
+            console.log(this.$router);
+            this.$router.back();
         }
     }
 }
