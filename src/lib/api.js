@@ -14,3 +14,8 @@ export const login = (obj) =>
     url: 'login.app',
     data: obj.data
   })
+// 利活宝产品列表
+export const getLhbList = (obj) =>
+  request({
+    url: 'queryLhbPrd.app'
+  })

@@ -1,7 +1,7 @@
 <template>
     <div class="page page-current">
         <m-header title-text="登录"></m-header>
-        <div class="content ld-content pd-details-box1" v-if="!loading">
+        <div class="content ld-content pd-details-box1">
             <form @submit.prevent="login">
                 <div class="list-block">
                     <ul>
@@ -44,7 +44,6 @@
                 </div>
             </form>
         </div>
-        <m-loading v-if="loading"></m-loading>
     </div>
 </template>
 <script>
@@ -61,8 +60,6 @@ export default {
         MLoading
     },
     data: () => ({
-        loginInf: {},
-        loading: 0,
         name: "",
         password: ""
     }),
@@ -77,7 +74,6 @@ export default {
             let vm = this;
             vm.$validator.validateAll().then(result => {
                 if(result){
-                    vm.loading = 1;
                     rqApi.login({ 
                         data: { 
                             custMobile: vm.name, 
@@ -88,8 +84,8 @@ export default {
                         if (req.data.respCode == '000') {
                             let loginInf = req.data.data;
                             localStorage.CUSTID=loginInf.userInfoBean.custId;
-                            localStorage.TOKEN=loginInf.userInfoBean.token;
-                            vm.loading = 0;
+                            window.sessionStorage.user = JSON.stringify(loginInf);
+                            vm.$store.dispatch('setUserInfo', loginInf);
                             router.push({ path: '/'});
                         }
                     })

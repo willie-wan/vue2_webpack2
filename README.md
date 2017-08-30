@@ -1,4 +1,4 @@
-# vue2+axios+webpack2
+# vue2+axios+vuex+webpack2
 
 > A Vue.js project
 
