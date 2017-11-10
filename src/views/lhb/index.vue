@@ -82,6 +82,7 @@ import MLoading from '@/components/loading'
 import MModal from '@/components/modal'
 import * as rqApi from '@/lib/api'
 import Bus from '@/store/bus'
+import {isLogin} from "@/lib/module/common";
 export default {
 	components: {
 		MHeader,
@@ -140,13 +141,9 @@ export default {
 		},
 		// 点击“充值”
 		beginRecharge() {
-			let vm = this;
-			// 已登录
-			if (vm.getUserInfo.userInfoBean) {
-
-			} else {
-				router.push({ path: '/login' });
-			}
+			isLogin().then(function(data){
+				router.push({ path: '/lhbDetails' });
+			})
 		},
 		// 获取利活宝产品列表
 		getLhblist(){

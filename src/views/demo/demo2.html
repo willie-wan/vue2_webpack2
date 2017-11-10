@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="example">
+            <my-component></my-component>
+        </div>
+        <script src="../../../node_modules/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('my-component', {
+                template: '<div>A custom component!</div>',
+                data:function(){
+                    return {
+
+                    }
+                },
+                beforeCreate() {
+                    console.log('组件实例化之前');
+                    console.log(this);
+                }
+            })
+            // 创建根实例
+            new Vue({
+                el: '#example'
+            })
+        </script>
+    </body>
+</html>

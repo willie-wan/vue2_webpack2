@@ -81,9 +81,11 @@ export default {
                         } 
                     })
                     .then(function (req) {
+                        debugger;
                         if (req.data.respCode == '000') {
                             let loginInf = req.data.data;
                             localStorage.CUSTID=loginInf.userInfoBean.custId;
+                            localStorage.TOKEN=loginInf.userInfoBean.token;
                             window.sessionStorage.user = JSON.stringify(loginInf);
                             vm.$store.dispatch('setUserInfo', loginInf);
                             router.push({ path: '/'});
