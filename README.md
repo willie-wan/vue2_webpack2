@@ -1,6 +1,4 @@
-# vue2+axios+vuex+webpack2
-
-> A Vue.js project
+# 基于vue2+axios+vuex+webpack2开发SPA项目
 
 ## Build Setup
 
